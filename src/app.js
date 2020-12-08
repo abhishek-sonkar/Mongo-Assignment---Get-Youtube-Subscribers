@@ -24,13 +24,12 @@ app.get('/subscribers/:id', async(req, res) => {
     try {
         const reqData = await SubscriberModel.findOne( { _id: searchId });
         if(reqData == null) {
-            res.sendStatus(400).send({ message: "Not found" });
+            res.status(400).send({ message: "Not found" });
         } else {
             res.send(reqData);
         }
-    }
-    catch(err) {
-        res.sendStatus(400).send({ message: err.message });
+    } catch(error) {
+        res.status(400).send({ message: error.message });
     }
 });
 
